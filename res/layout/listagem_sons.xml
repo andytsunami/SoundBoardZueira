@@ -1,16 +1,73 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listagem"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_height="wrap_content"
     tools:context=".InicioActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <LinearLayout
+        android:id="@+id/principallayuot"
+	        android:layout_marginTop="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:orientation="horizontal" >
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/layoutesquerda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/risada"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/chaves"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/risada"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            <Button
+                android:id="@+id/delicia"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/delicia"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/delicia"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutdireita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/cazalbe"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/cazalbe"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/cazalbe"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

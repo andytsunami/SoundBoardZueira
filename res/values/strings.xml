@@ -4,5 +4,8 @@
     <string name="app_name">SoundBoardZueira</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="risada">Risada \nChaves</string>
+    <string name="cazalbe">Risada \ndo Cazalbé</string>
+    <string name="delicia">Ai que \ndelicia!</string>
 
 </resources>
