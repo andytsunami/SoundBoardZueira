@@ -66,6 +66,17 @@
                 android:paddingTop="14sp"
                 android:text="@string/cazalbe"
                 android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            <Button
+                android:id="@+id/viadao"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/viadao"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/viadao"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
             
         </LinearLayout>
     </LinearLayout>
