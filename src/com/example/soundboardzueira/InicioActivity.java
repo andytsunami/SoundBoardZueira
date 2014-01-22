@@ -14,6 +14,7 @@ public class InicioActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listagem_sons);
 
+		// RISADA DO CHAVES
 		Button risada = (Button) findViewById(R.id.risada);
 
 		risada.setOnClickListener(new View.OnClickListener() {
@@ -23,6 +24,17 @@ public class InicioActivity extends Activity {
 				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.risada);
 				player.start();
 
+			}
+		});
+		
+		Button delicia =  (Button) findViewById(R.id.delicia);
+		delicia.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.delicia);
+				player.start();
+				
 			}
 		});
 
