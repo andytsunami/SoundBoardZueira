@@ -27,12 +27,25 @@ public class InicioActivity extends Activity {
 			}
 		});
 		
+		
+		//Ai que delicia
 		Button delicia =  (Button) findViewById(R.id.delicia);
 		delicia.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.delicia);
+				player.start();
+				
+			}
+		});
+		
+		Button cazalbe = (Button) findViewById(R.id.cazalbe);
+		cazalbe.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.cazalbe);
 				player.start();
 				
 			}
