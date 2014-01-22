@@ -40,12 +40,25 @@ public class InicioActivity extends Activity {
 			}
 		});
 		
+		// Risada do prassa
 		Button cazalbe = (Button) findViewById(R.id.cazalbe);
 		cazalbe.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.cazalbe);
+				player.start();
+				
+			}
+		});
+		
+		//Hino dos Huehuehue br
+		Button huehue = (Button) findViewById(R.id.huehue);
+		huehue.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.huehue);
 				player.start();
 				
 			}
