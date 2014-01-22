@@ -43,7 +43,17 @@
                 android:paddingTop="14sp"
                 android:text="@string/delicia"
                 android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            
+            <Button
+                android:id="@+id/morrediabo"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/morrediabo"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/morrediabo"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
             
         </LinearLayout>
 
