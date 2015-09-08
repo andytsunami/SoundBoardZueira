@@ -98,6 +98,17 @@
                 android:paddingTop="14sp"
                 android:text="@string/huehue"
                 android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            <Button
+                android:id="@+id/ratinho"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ratim"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/ratinho"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
             
         </LinearLayout>
     </LinearLayout>

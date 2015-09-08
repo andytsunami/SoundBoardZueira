@@ -1,13 +1,19 @@
 package com.example.soundboardzueira;
 
+import java.io.IOException;
+
 import android.app.Activity;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
 public class InicioActivity extends Activity {
+	
+	private MediaPlayer player = new MediaPlayer();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +27,7 @@ public class InicioActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.risada);
-				player.start();
+				toca(MediaPlayer.create(InicioActivity.this, R.raw.risada));
 
 			}
 		});
@@ -34,9 +39,7 @@ public class InicioActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.delicia);
-				player.start();
-				
+				toca(MediaPlayer.create(InicioActivity.this, R.raw.delicia));
 			}
 		});
 		
@@ -46,8 +49,7 @@ public class InicioActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.cazalbe);
-				player.start();
+				toca(MediaPlayer.create(InicioActivity.this, R.raw.cazalbe));
 				
 			}
 		});
@@ -58,12 +60,66 @@ public class InicioActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				MediaPlayer player = MediaPlayer.create(InicioActivity.this, R.raw.huehue);
-				player.start();
+				toca(MediaPlayer.create(InicioActivity.this, R.raw.huehue));
+				
+			}
+		});
+		
+		//Ratinho
+		Button ratinho = (Button) findViewById(R.id.ratinho);
+		ratinho.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				toca(MediaPlayer.create(InicioActivity.this, Uri.parse("https://dl.dropboxusercontent.com/u/35720465/sons/ratinho.mp3")));
 				
 			}
 		});
 
+	}
+
+	protected void toca(MediaPlayer midia) {
+		Uri myUri = Uri.parse("https://dl.dropboxusercontent.com/u/35720465/sons/ratinho.mp3");
+		
+		//midia = new MediaPlayer();
+		player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+		
+		try {
+			player.setDataSource(getApplicationContext(),myUri);
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			player.prepare();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		player.start();
+
+		
+		/*if(player.isPlaying()){
+			player.stop();
+			player = midia;
+		} else {
+			player = midia;
+		}
+		player.start();*/
 	}
 
 	@Override
@@ -72,5 +128,6 @@ public class InicioActivity extends Activity {
 		getMenuInflater().inflate(R.menu.inicio, menu);
 		return true;
 	}
+	
 
 }
