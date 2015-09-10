@@ -19,7 +19,7 @@ public class InicioActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listagem_sons);
-
+/*
 		// RISADA DO CHAVES
 		Button risada = (Button) findViewById(R.id.risada);
 
@@ -64,22 +64,23 @@ public class InicioActivity extends Activity {
 				
 			}
 		});
-		
+		*/
 		//Ratinho
 		Button ratinho = (Button) findViewById(R.id.ratinho);
 		ratinho.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				toca(MediaPlayer.create(InicioActivity.this, Uri.parse("https://dl.dropboxusercontent.com/u/35720465/sons/ratinho.mp3")));
+				toca(getString(R.string.ratinhoUri));
+				//toca(MediaPlayer.create(InicioActivity.this, Uri.parse("https://dl.dropboxusercontent.com/u/35720465/sons/ratinho.mp3")));
 				
 			}
 		});
 
 	}
 
-	protected void toca(MediaPlayer midia) {
-		Uri myUri = Uri.parse("https://dl.dropboxusercontent.com/u/35720465/sons/ratinho.mp3");
+	protected void toca(String uri) {
+		Uri myUri = Uri.parse(uri);
 		
 		//midia = new MediaPlayer();
 		player.setAudioStreamType(AudioManager.STREAM_MUSIC);
