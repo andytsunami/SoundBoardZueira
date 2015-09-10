@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SoundBoardZueira</string>
+    <string name="app_name">Zueira na sala</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="risada">Risada \nChaves</string>
@@ -9,7 +9,24 @@
     <string name="delicia">Ai que \ndelicia!</string>
     <string name="viadao">Viadão</string>
     <string name="morrediabo">Morre diabo!</string>
-    <string name="huehue">Hino dos\nHueHUe br</string>
+    <string name="huehue">Huehuehue</string>
+    <string name="hinoHue">Hino dos\nHueHUe br</string>
     <string name="ratinho">Ratinho nho nho</string>
+    <string name="moises">Moises...\nNão consegue né</string>
+    <string name="uepa">UEPA!!</string>
+    <string name="errou">ERROU!!</string>
+    
+    
+    
 	<string name="ratinhoUri">https://dl.dropboxusercontent.com/u/35720465/sons/ratinho.mp3</string>
+	<string name="risadaUri">https://dl.dropboxusercontent.com/u/35720465/sons/risadas.mp3</string>
+	<string name="cazalbeUri">https://dl.dropboxusercontent.com/u/35720465/sons/cazalbe.mp3</string>
+	<string name="deliciaUri">https://dl.dropboxusercontent.com/u/35720465/sons/delicia.mp3</string>
+	<string name="viadaoUri">https://dl.dropboxusercontent.com/u/35720465/sons/viadao.mp3</string>
+	<string name="hinoHueUri">https://dl.dropboxusercontent.com/u/35720465/sons/HinoHue.mp3</string>
+	<string name="huehueUri">https://dl.dropboxusercontent.com/u/35720465/sons/huehue.mp3</string>
+	<string name="moisesUri">https://dl.dropboxusercontent.com/u/35720465/sons/moises.mp3</string>
+	<string name="morrediaboUri">https://dl.dropboxusercontent.com/u/35720465/sons/morrediabo.mp3</string>
+	<string name="uepaUri">https://dl.dropboxusercontent.com/u/35720465/sons/uepa.mp3</string>
+	<string name="errouUri">https://dl.dropboxusercontent.com/u/35720465/sons/errou.mp3</string>
 </resources>

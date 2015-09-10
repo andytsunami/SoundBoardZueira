@@ -19,7 +19,6 @@ public class InicioActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listagem_sons);
-/*
 		// RISADA DO CHAVES
 		Button risada = (Button) findViewById(R.id.risada);
 
@@ -27,19 +26,8 @@ public class InicioActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				toca(MediaPlayer.create(InicioActivity.this, R.raw.risada));
+				toca(getString(R.string.risadaUri));
 
-			}
-		});
-		
-		
-		//Ai que delicia
-		Button delicia =  (Button) findViewById(R.id.delicia);
-		delicia.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				toca(MediaPlayer.create(InicioActivity.this, R.raw.delicia));
 			}
 		});
 		
@@ -49,22 +37,54 @@ public class InicioActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				toca(MediaPlayer.create(InicioActivity.this, R.raw.cazalbe));
+				toca(getString(R.string.cazalbeUri));
 				
 			}
 		});
 		
+		//Ai que delicia
+		Button delicia =  (Button) findViewById(R.id.delicia);
+		delicia.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				toca(getString(R.string.deliciaUri));
+			}
+		});
+		
+		//Que viadão bonito
+		Button viadao =  (Button) findViewById(R.id.viadao);
+		viadao.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				toca(getString(R.string.viadaoUri));
+			}
+		});
+		
 		//Hino dos Huehuehue br
+		Button hinoHue = (Button) findViewById(R.id.hinoHue);
+		hinoHue.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				toca(getString(R.string.hinoHueUri));
+				
+			}
+		});
+		
+		//Huehuehue
 		Button huehue = (Button) findViewById(R.id.huehue);
 		huehue.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				toca(MediaPlayer.create(InicioActivity.this, R.raw.huehue));
-				
+				toca(getString(R.string.huehueUri));
+					
 			}
 		});
-		*/
+				
+		
 		//Ratinho
 		Button ratinho = (Button) findViewById(R.id.ratinho);
 		ratinho.setOnClickListener(new View.OnClickListener() {
@@ -72,16 +92,56 @@ public class InicioActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				toca(getString(R.string.ratinhoUri));
-				//toca(MediaPlayer.create(InicioActivity.this, Uri.parse("https://dl.dropboxusercontent.com/u/35720465/sons/ratinho.mp3")));
 				
 			}
 		});
+		
+		//Moises
+		Button moises = (Button) findViewById(R.id.moises);
+		moises.setOnClickListener(new View.OnClickListener() {
+					
+			@Override
+			public void onClick(View v) {
+				toca(getString(R.string.moisesUri));
+						
+					}
+				});
 
+		//Ratinho
+		Button morrediabo = (Button) findViewById(R.id.morrediabo);
+		morrediabo.setOnClickListener(new View.OnClickListener() {
+					
+			@Override
+			public void onClick(View v) {
+				toca(getString(R.string.morrediaboUri));
+						
+					}
+				});
+		//UEPA
+		Button uepa = (Button) findViewById(R.id.uepa);
+		uepa.setOnClickListener(new View.OnClickListener() {
+							
+			@Override
+			public void onClick(View v) {
+				toca(getString(R.string.uepaUri));
+								
+					}
+				});
+		//ERROU
+		Button errou = (Button) findViewById(R.id.errou);
+		errou.setOnClickListener(new View.OnClickListener() {
+									
+			@Override
+			public void onClick(View v) {
+				toca(getString(R.string.errouUri));
+									
+					}
+				});
 	}
 
 	protected void toca(String uri) {
 		Uri myUri = Uri.parse(uri);
-		
+		player.reset();
 		//midia = new MediaPlayer();
 		player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		
@@ -113,7 +173,6 @@ public class InicioActivity extends Activity {
 		
 		player.start();
 
-		
 		/*if(player.isPlaying()){
 			player.stop();
 			player = midia;

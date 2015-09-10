@@ -3,7 +3,7 @@
     android:id="@+id/listagem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".InicioActivity" >
+    tools:context=".InicioActivity">
 
     <LinearLayout
         android:id="@+id/principallayuot"
@@ -12,7 +12,7 @@
 	        android:layout_height="wrap_content"
 	        android:gravity="center"
 	        android:orientation="horizontal" >
-
+		
         <LinearLayout
             android:id="@+id/layoutesquerda"
             android:layout_width="wrap_content"
@@ -33,6 +33,17 @@
                 android:text="@string/risada"
                 android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
             <Button
+                android:id="@+id/uepa"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/uepa"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/uepa"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            <Button
                 android:id="@+id/delicia"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
@@ -44,6 +55,17 @@
                 android:text="@string/delicia"
                 android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
             <Button
+                android:id="@+id/errou"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/errou"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/errou"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            <Button
                 android:id="@+id/morrediabo"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
@@ -53,6 +75,17 @@
                 android:paddingRight="14sp"
                 android:paddingTop="14sp"
                 android:text="@string/morrediabo"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            <Button
+                android:id="@+id/moises"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/moises"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/moises"
                 android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
             
         </LinearLayout>
@@ -86,6 +119,17 @@
                 android:paddingRight="14sp"
                 android:paddingTop="14sp"
                 android:text="@string/viadao"
+                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
+            <Button
+                android:id="@+id/hinoHue"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/huehue"
+                android:paddingLeft="14sp"
+                android:paddingRight="14sp"
+                android:paddingTop="14sp"
+                android:text="@string/hinoHue"
                 android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
             <Button
                 android:id="@+id/huehue"
