@@ -2,11 +2,15 @@ package com.example.soundboardzueira;
 
 import java.io.IOException;
 
+import com.example.soundboardzueira.dao.SomDAO;
+import com.example.soundboardzueira.model.Som;
+
 import android.app.Activity;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -141,6 +145,17 @@ public class InicioActivity extends Activity {
 
 	protected void toca(String uri) {
 		Uri myUri = Uri.parse(uri);
+		
+		/*
+		SomDAO somDAO = new SomDAO(InicioActivity.this);
+		
+		String nomeSom = recuperaNome(uri);
+		if(somDAO.existe(nomeSom)){
+			Som som = somDAO.buscarPorNome(nomeSom);
+			
+		} 
+		*/
+		
 		player.reset();
 		//midia = new MediaPlayer();
 		player.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -187,6 +202,13 @@ public class InicioActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.inicio, menu);
 		return true;
+	}
+	
+	private String recuperaNome(String uri){
+		String[] partes = uri.split("/");
+		String nomeArquivo = partes[partes.length -1];
+		
+		return nomeArquivo.replace(".mp3", "");
 	}
 	
 
