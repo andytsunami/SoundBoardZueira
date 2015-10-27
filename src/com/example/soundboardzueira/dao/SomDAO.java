@@ -91,7 +91,7 @@ public class SomDAO {
 	}
 	
 	public boolean existe(String nome){
-		Cursor cursor = this.sqlHelper.getReadableDatabase().rawQuery("SELECT nome FROM " + TABELA + "WHERE nome = ?", new String[]{nome});
+		Cursor cursor = this.sqlHelper.getReadableDatabase().rawQuery("SELECT nome FROM " + TABELA + " WHERE nome = ?", new String[]{nome});
 		int count = cursor.getCount();
 		
 		cursor.close();
@@ -101,7 +101,7 @@ public class SomDAO {
 	}
 	
 	public Som buscarPorNome(String nome){
-		Cursor cursor = this.sqlHelper.getReadableDatabase().rawQuery("SELECT nome FROM " + TABELA + "WHERE nome = ?", new String[]{nome});
+		Cursor cursor = this.sqlHelper.getReadableDatabase().rawQuery("SELECT * FROM " + TABELA + " WHERE nome = ?", new String[]{nome});
 		Som som = new Som();
 		while(cursor.moveToNext()){
 			som.setId(cursor.getLong(0));
