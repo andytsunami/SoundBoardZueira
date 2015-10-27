@@ -1,6 +1,13 @@
 package com.example.soundboardzueira;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import com.example.soundboardzueira.dao.SomDAO;
 import com.example.soundboardzueira.model.Som;
@@ -9,8 +16,8 @@ import android.app.Activity;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -146,55 +153,79 @@ public class InicioActivity extends Activity {
 	protected void toca(String uri) {
 		Uri myUri = Uri.parse(uri);
 		
-		/*
+		MyDownloadTask downloadTask = new MyDownloadTask();
+		downloadTask.execute(myUri.toString());
+		
 		SomDAO somDAO = new SomDAO(InicioActivity.this);
+		FileInputStream fis = null;
 		
 		String nomeSom = recuperaNome(uri);
 		if(somDAO.existe(nomeSom)){
-			Som som = somDAO.buscarPorNome(nomeSom);
+			//System.out.println("Som achado: " + nomeSom);
+			try {
+				Som som = somDAO.buscarPorNome(nomeSom);
+				File tempMp3 = File.createTempFile("temp", "mp3", getCacheDir());
+				tempMp3.deleteOnExit();
+				FileOutputStream fos = new FileOutputStream(tempMp3);
+				fos.write(som.getBinario());
+				fos.close();
+				fis = new FileInputStream(tempMp3);
+			} catch( Exception e) {
+				e.printStackTrace();
+			}
 			
-		} 
-		*/
+		} else {
+			try {
+				MyDownloadTask task = new MyDownloadTask();
+				byte[] arquivo = task.execute(myUri.toString()).get();
+	            
+	            Som som = new Som();
+	            som.setNome(nomeSom);
+	            som.setBinario(arquivo);
+	            
+	            somDAO.insere(som);
+	            
+	           
+	            
+				File tempMp3 = File.createTempFile("temp", "mp3", getCacheDir());
+				tempMp3.deleteOnExit();
+				FileOutputStream fos = new FileOutputStream(tempMp3);
+				fos.write(som.getBinario());
+				fos.close();
+				fis = new FileInputStream(tempMp3);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
 		
 		player.reset();
-		//midia = new MediaPlayer();
 		player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		
 		try {
-			player.setDataSource(getApplicationContext(),myUri);
+			if(fis != null) {
+				player.setDataSource(fis.getFD());
+			}
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
 			player.prepare();
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		player.start();
-
-		/*if(player.isPlaying()){
-			player.stop();
-			player = midia;
-		} else {
-			player = midia;
-		}
-		player.start();*/
 	}
 
 	@Override
@@ -212,4 +243,32 @@ public class InicioActivity extends Activity {
 	}
 	
 
+}
+
+class MyDownloadTask extends AsyncTask<String,String,byte[]>
+{
+    protected byte[] doInBackground(String... params) {
+    	try {
+    		URL url = new URL(params[0]);
+    		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+    		//System.out.println(httpConn.getResponseCode());
+    		InputStream inputStream = httpConn.getInputStream();
+    		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    		
+    		int bytesRead = -1;
+            byte[] buffer = new byte[1024];
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+            	bos.write(buffer, 0, bytesRead);
+            }
+            
+            httpConn.disconnect();
+            
+            return bos.toByteArray();
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return null;
+    	
+ }
 }
