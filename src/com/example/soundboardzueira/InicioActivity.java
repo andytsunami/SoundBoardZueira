@@ -1,19 +1,38 @@
 package com.example.soundboardzueira;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.zip.Inflater;
 
-import com.example.soundboardzueira.dao.SomDAO;
-import com.example.soundboardzueira.model.Som;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+
+import com.example.soundboardzueira.dto.SomDTO;
 
 public class InicioActivity extends Activity {
 	
@@ -23,124 +42,9 @@ public class InicioActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listagem_sons);
-		// RISADA DO CHAVES
-		Button risada = (Button) findViewById(R.id.risada);
-
-		risada.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				toca(getString(R.string.risadaUri));
-
-			}
-		});
 		
-		// Risada do prassa
-		Button cazalbe = (Button) findViewById(R.id.cazalbe);
-		cazalbe.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.cazalbeUri));
-				
-			}
-		});
+		new DownloadJsonAsyncTask().execute("https://dl.dropboxusercontent.com/u/35720465/sons/sons.json");
 		
-		//Ai que delicia
-		Button delicia =  (Button) findViewById(R.id.delicia);
-		delicia.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.deliciaUri));
-			}
-		});
-		
-		//Que viadão bonito
-		Button viadao =  (Button) findViewById(R.id.viadao);
-		viadao.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.viadaoUri));
-			}
-		});
-		
-		//Hino dos Huehuehue br
-		Button hinoHue = (Button) findViewById(R.id.hinoHue);
-		hinoHue.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.hinoHueUri));
-				
-			}
-		});
-		
-		//Huehuehue
-		Button huehue = (Button) findViewById(R.id.huehue);
-		huehue.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.huehueUri));
-					
-			}
-		});
-				
-		
-		//Ratinho
-		Button ratinho = (Button) findViewById(R.id.ratinho);
-		ratinho.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.ratinhoUri));
-				
-			}
-		});
-		
-		//Moises
-		Button moises = (Button) findViewById(R.id.moises);
-		moises.setOnClickListener(new View.OnClickListener() {
-					
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.moisesUri));
-						
-					}
-				});
-
-		//Ratinho
-		Button morrediabo = (Button) findViewById(R.id.morrediabo);
-		morrediabo.setOnClickListener(new View.OnClickListener() {
-					
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.morrediaboUri));
-						
-					}
-				});
-		//UEPA
-		Button uepa = (Button) findViewById(R.id.uepa);
-		uepa.setOnClickListener(new View.OnClickListener() {
-							
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.uepaUri));
-								
-					}
-				});
-		//ERROU
-		Button errou = (Button) findViewById(R.id.errou);
-		errou.setOnClickListener(new View.OnClickListener() {
-									
-			@Override
-			public void onClick(View v) {
-				toca(getString(R.string.errouUri));
-									
-					}
-				});
 	}
 
 	protected void toca(String uri) {
@@ -211,5 +115,141 @@ public class InicioActivity extends Activity {
 		return nomeArquivo.replace(".mp3", "");
 	}
 	
+	class DownloadJsonAsyncTask extends AsyncTask<String, Void, List<SomDTO>>{
 
+		ProgressDialog dialogo;
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			dialogo = ProgressDialog.show(InicioActivity.this,"Segure o reggae!","Atualizando a lista de sons...");
+			
+		}
+		
+		@Override
+		protected List<SomDTO> doInBackground(String... params) {
+			String url = params[0];
+			
+			HttpClient httpClient = new DefaultHttpClient();
+			HttpGet httpGet = new HttpGet(url);
+			
+			try {
+				HttpResponse response = httpClient.execute(httpGet);
+				HttpEntity entity = response.getEntity();
+				
+				if(entity != null){
+					InputStream instream = entity.getContent();
+					String json = toString(instream);
+					instream.close();
+					
+					List<SomDTO> sonsList = getSomDto(json);
+					
+					return sonsList;
+				}
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(List<SomDTO> result) {
+			super.onPostExecute(result);
+			dialogo.dismiss();
+			
+			if(result != null){
+				
+				LayoutInflater layoutInflater = InicioActivity.this.getLayoutInflater();
+				
+				for (final SomDTO somDTO : result) {
+						
+					
+						//Button botao = new Button(InicioActivity.this);
+						Button botao = (Button) layoutInflater.inflate(R.layout.modelo_botao, null);
+						
+					
+						AsyncTask<String,Void,Drawable> execute = new UrlTask().execute(somDTO.getImage());
+						
+						Drawable drawable = null;
+						try {
+							drawable = execute.get();
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (ExecutionException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						
+						
+						//botao.setCompoundDrawables(null, null, drawable, null);
+						botao.setText(somDTO.getNome());
+						botao.setBackground(drawable);
+						
+					
+						botao.setOnClickListener(new View.OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							toca(somDTO.getUrl());
+						}
+					});
+					
+					
+					LinearLayout direita = (LinearLayout) findViewById(R.id.layoutdireita);
+					direita.addView(botao);
+					
+				}
+			}
+			
+		}
+		
+		private String toString(InputStream is) throws IOException{
+			byte[] bytes = new byte[1024];
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			int lidos;
+			while((lidos = is.read(bytes)) > 0){
+				baos.write(bytes,0,lidos);
+			}
+			
+			return new String(baos.toByteArray());
+			
+		}
+		
+		private List<SomDTO> getSomDto(String jsonString){
+			ArrayList<SomDTO> sons = new ArrayList<SomDTO>();
+			
+			try{
+				JSONArray somLists = new JSONArray(jsonString);
+				JSONObject somList = somLists.getJSONObject(0);
+				JSONArray sonsArray = somList.getJSONArray("sons");
+				
+				JSONObject somDTO;
+				
+				for ( int i = 0 ;i < sonsArray.length(); i++) {
+					somDTO = new JSONObject(sonsArray.getString(i));
+					
+					Log.i("ZACA", "nome = " + somDTO.getString("nome"));
+					
+					SomDTO som = new SomDTO();
+					som.setNome(somDTO.getString("nome"));
+					som.setUrl(somDTO.getString("url"));
+					som.setImage(somDTO.getString("image"));
+					
+					sons.add(som);
+				}
+				
+			} catch (JSONException e){
+				Log.e("ZACA", "Erro no parsing do JSON", e);
+			}
+			
+			return sons;
+		}
+		
+	}
+
+	
 }
