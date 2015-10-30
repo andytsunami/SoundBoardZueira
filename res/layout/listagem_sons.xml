@@ -20,74 +20,6 @@
             android:layout_marginRight="20dp"
             android:gravity="center"
             android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/risada"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/chaves"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/risada"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/uepa"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/uepa"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/uepa"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/delicia"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/delicia"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/delicia"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/errou"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/errou"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/errou"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/morrediabo"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/morrediabo"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/morrediabo"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/moises"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/moises"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/moises"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            
         </LinearLayout>
 
         <LinearLayout
@@ -97,64 +29,6 @@
             android:layout_marginRight="20dp"
             android:gravity="center"
             android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/cazalbe"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/cazalbe"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/cazalbe"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/viadao"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/viadao"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/viadao"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/hinoHue"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/huehue"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/hinoHue"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/huehue"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/huehue"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/huehue"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            <Button
-                android:id="@+id/ratinho"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/ratim"
-                android:paddingLeft="14sp"
-                android:paddingRight="14sp"
-                android:paddingTop="14sp"
-                android:text="@string/ratinho"
-                android:textSize="@dimen/abs__action_bar_subtitle_text_size" />
-            
         </LinearLayout>
     </LinearLayout>
-
 </ScrollView>

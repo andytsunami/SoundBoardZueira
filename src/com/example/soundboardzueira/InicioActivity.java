@@ -26,11 +26,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.soundboardzueira.dto.SomDTO;
 
@@ -159,15 +163,16 @@ public class InicioActivity extends Activity {
 			super.onPostExecute(result);
 			dialogo.dismiss();
 			
+			int id = 0;  
 			if(result != null){
 				
 				LayoutInflater layoutInflater = InicioActivity.this.getLayoutInflater();
-				
 				for (final SomDTO somDTO : result) {
 						
 					
-						//Button botao = new Button(InicioActivity.this);
-						Button botao = (Button) layoutInflater.inflate(R.layout.modelo_botao, null);
+						Button botao = new Button(InicioActivity.this);
+						//Button botao = (Button) layoutInflater.inflate(R.layout.modelo_botao, null);
+						
 						
 					
 						AsyncTask<String,Void,Drawable> execute = new UrlTask().execute(somDTO.getImage());
@@ -184,12 +189,22 @@ public class InicioActivity extends Activity {
 						}
 						
 						
+						botao.setWidth(LayoutParams.WRAP_CONTENT);
+						botao.setPadding(14, 14, 14, 14);
+						botao.setHeight(LayoutParams.WRAP_CONTENT);
 						
-						//botao.setCompoundDrawables(null, null, drawable, null);
-						botao.setText(somDTO.getNome());
 						botao.setBackground(drawable);
 						
-					
+						botao.setId(id);
+						
+						
+						TextView texto = new TextView(InicioActivity.this);
+						texto.setText(somDTO.getNome());
+						texto.setTextSize(20);
+						texto.setId(id);
+						
+						
+
 						botao.setOnClickListener(new View.OnClickListener() {
 						
 						@Override
@@ -198,9 +213,18 @@ public class InicioActivity extends Activity {
 						}
 					});
 					
+					if(id % 2 == 0){
+						LinearLayout direita = (LinearLayout) findViewById(R.id.layoutdireita);
+						direita.addView(botao);
+						direita.addView(texto);
+						
+					} else {
+						LinearLayout esquerda = (LinearLayout) findViewById(R.id.layoutesquerda);
+						esquerda.addView(botao);
+						esquerda.addView(texto);
+					}
 					
-					LinearLayout direita = (LinearLayout) findViewById(R.id.layoutdireita);
-					direita.addView(botao);
+					id = id + 1;
 					
 				}
 			}
