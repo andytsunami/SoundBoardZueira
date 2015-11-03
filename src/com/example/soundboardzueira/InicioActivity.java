@@ -217,9 +217,9 @@ public class InicioActivity extends Activity {
 						}
 						
 						
-						botao.setWidth(LayoutParams.WRAP_CONTENT);
+						botao.setWidth(128);
 						botao.setPadding(14, 14, 14, 14);
-						botao.setHeight(LayoutParams.WRAP_CONTENT);
+						botao.setHeight(128);
 						
 						botao.setBackground(drawable);
 						
