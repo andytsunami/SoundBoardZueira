@@ -22,3 +22,8 @@ local.properties
 .DS_Store
 *.zip
 *.idea
+
+.gradle/
+SoundBoardZueira.iml
+app/
+build/
