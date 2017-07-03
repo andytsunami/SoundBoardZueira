@@ -66,7 +66,7 @@ public class InicioActivity extends Activity {
 		
 		String nomeSom = recuperaNome(uri);
 		if(somDAO.existe(nomeSom)){
-			//System.out.println("Som achado: " + nomeSom);
+			Log.i("ZACA", "Som achado: " + nomeSom);
 			try {
 				Som som = somDAO.buscarPorNome(nomeSom);
 				File tempMp3 = File.createTempFile("temp", "mp3", getCacheDir());
@@ -154,7 +154,7 @@ public class InicioActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialogo = ProgressDialog.show(InicioActivity.this,"Segure o reggae!","Atualizando a lista de sons...");
+			dialogo = ProgressDialog.show(InicioActivity.this,"Aqui nois constroi fibra!","Atualizando a lista de sons...");
 			
 		}
 		
