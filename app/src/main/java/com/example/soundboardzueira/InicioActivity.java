@@ -51,7 +51,7 @@ public class InicioActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listagem_sons);
 		
-		new DownloadJsonAsyncTask().execute("https://dl.dropboxusercontent.com/u/35720465/sons/sons.json");
+		new DownloadJsonAsyncTask().execute("http://apresentacao.top/zuera/sons.json");
 		
 	}
 
